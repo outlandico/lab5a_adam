@@ -38,8 +38,6 @@ function multiply(a, b) { //eslint-disable-line
     }
     // Here is the test for multiply(); uncomment it to run it
     testMultiply(5,9);
-// Here is the test for multiply(); uncomment it to run it
-// testMultiply(5,9);
 
 // Once you get the test passing, do an a-c-p cycle and synchronize the code between GitHub and your laptop. Don't forget to create a new branch for your work on the next question!
 
@@ -56,11 +54,31 @@ Test this function by hand in the console to get it working, and when you think 
 
 // Write your code here
 function sumAndMultiply(a, b, c) { //eslint-disable-line
+    // Function to add two numbers
+    function sum(x, y) {
+        return x - (-y); // Implementing addition without using +
+    }
 
+    // Function to multiply two numbers
+    function multiply(x, y) {
+        let result = 0;
+        for (let i = 0; i < Math.abs(y); i = sum(i, 1)) {
+            result = sum(result, x); // Implementing multiplication without using *
+        }
+        if (y < 0) {
+            result = -result; // Correcting negative multiplication
+        }
+        return result;
+    }
+
+    const sumResult = sum(sum(a, b), c);
+    const productResult = multiply(multiply(a, b), c);
+    const sumExpression = `${a} and ${b} and ${c} sum to ${sumResult}.`;
+    const productExpression = `The product of ${a} and ${b} and ${c} is ${productResult}.`;
+
+    return [sumResult, productResult, sumExpression, productExpression];
 }
 
-// Here is the test for sumAndMultiply(); uncomment it to run it
-// testSumAndMultiply(4,7,5);
 
 // Once you get the test passing, do an a-c-p cycle and synchronize the code between GitHub and your laptop. Don't forget to create a new branch for your work on the next question!
 
